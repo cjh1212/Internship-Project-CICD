@@ -6,7 +6,7 @@ from sklearn.metrics import accuracy_score
 
 final = pd.read_csv("final.csv")
 
-label = 's5_final_cat'
+label = 's5_final'
 
 X = final[['race_African American', 'race_Hispanic', 'race_Caucasian', 'choice_number', 'play_time',
                 'priority_final', 'refusal_final']]
