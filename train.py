@@ -12,7 +12,7 @@ X = final[['race_African American', 'race_Hispanic', 'race_Caucasian', 'choice_n
                 'priority_final', 'refusal_final']]
 y = final[[f'{label}']]
 
-x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42, stratify=final['s5_final'])
+x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42)
 
 
 
