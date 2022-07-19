@@ -29,3 +29,9 @@ jobs:
       run: python3 2.py
     - name: train
       run: python3 train.py
+    - name: commit comment
+      run: cat details.txt >> details.md
+    - name: comment
+      uses: peter-evans/commit-comment@v2
+      with:
+        body: details.md
