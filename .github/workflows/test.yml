@@ -34,5 +34,5 @@ jobs:
     - name: comment
       uses: peter-evans/commit-comment@v2
       with:
-        body: details.md
-        path: details.md
+        body: ${{cat readme.md}}
+        
