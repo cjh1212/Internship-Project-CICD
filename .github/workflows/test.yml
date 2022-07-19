@@ -35,3 +35,4 @@ jobs:
       uses: peter-evans/commit-comment@v2
       with:
         body: details.md
+        path: details.md
