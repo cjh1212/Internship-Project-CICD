@@ -32,7 +32,7 @@ jobs:
     - name: commit comment
       run: cat details.txt >> details.md
       
-    - name: get-comment
+    - id: get-comment
       run: |
         body=$(cat 1.txt)
         echo ::set-output name=body::$body
