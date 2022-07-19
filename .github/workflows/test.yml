@@ -38,6 +38,8 @@ jobs:
 # Set action's output parameter
 # ::set-output name={name}::{value}
 
+# ::command-name parameter1=data1,parameter2=data2::value
+
     - name: comment
       uses: peter-evans/commit-comment@v2
       with:
