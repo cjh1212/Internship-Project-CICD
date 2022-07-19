@@ -31,8 +31,13 @@ jobs:
       run: python3 train.py
     - name: commit comment
       run: cat details.txt >> details.md
+      
+    - name: get-comment
+      run: |
+        body=$(cat readme.txt)
+        echo ::set-output name=body::$body
     - name: comment
       uses: peter-evans/commit-comment@v2
       with:
-        body: ${{cat readme.md}}
+        body: ${{ steps.get-comment-body.outputs.body }}
         
