@@ -34,6 +34,10 @@ jobs:
       run: |
         body=$(cat details.txt)
         echo ::set-output name=body::$body
+      
+# Set action's output parameter
+# ::set-output name={name}::{value}
+
     - name: comment
       uses: peter-evans/commit-comment@v2
       with:
