@@ -34,7 +34,7 @@ jobs:
       
     - name: get-comment
       run: |
-        body=$(cat readme.md)
+        body=$(cat README.md)
         echo ::set-output name=body::$body
     - name: comment
       uses: peter-evans/commit-comment@v2
