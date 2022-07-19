@@ -28,7 +28,7 @@ y_pred = svc.predict(x_test)
 
 print(accuracy_score(y_test, y_pred))
 
-message = "accuracy: "
+message = "accuracy: " + string(accuray_score(y_test, y_pred))
 
 with open('details.txt', 'w') as outfile:
     outfile.write(message)
