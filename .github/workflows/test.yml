@@ -30,12 +30,12 @@ jobs:
     - name: train
       run: python3 train.py
       
-    - id: get-comment
+    - id: get-accuracy
       run: |
         body=$(cat details.txt)
         echo ::set-output name=body::$body
     - name: comment
       uses: peter-evans/commit-comment@v2
       with:
-        body: ${{ steps.get-comment.outputs.body }}
+        body: ${{ steps.get-accuracy.outputs.body }}
         
