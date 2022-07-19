@@ -29,12 +29,10 @@ jobs:
       run: python3 2.py
     - name: train
       run: python3 train.py
-    - name: commit comment
-      run: cat details.txt >> details.md
       
     - id: get-comment
       run: |
-        body=$(cat 1.txt)
+        body=$(cat details.txt)
         echo ::set-output name=body::$body
     - name: comment
       uses: peter-evans/commit-comment@v2
