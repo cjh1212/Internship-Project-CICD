@@ -44,18 +44,10 @@ jobs:
         with:
           context: .
           load: true
-          tags: model
+          tags: test_tag
       - name: test
         run: |
-          docker run -d model
-          docker container exec model python3 train.py
-          if [ -s details.txt ]; then
-            echo 'not empty'
-          else
-            echo 'empty'
-          fi
-          docker rm -f model
-            
+          docker run --rm test_tag
       - name: build push
         uses: docker/build-push-action@v3
         with: 
