@@ -44,10 +44,10 @@ jobs:
         with:
           context: .
           load: true
-          tags: ${{ env.TEST_TAG }}
+          tags: test_tag
       - name: test
         run: |
-          docker run --rm ${{ env.TEST_TAG }} echo "test1"
+          docker run --rm test_tag
       - name: build push
         uses: docker/build-push-action@v3
         with: 
