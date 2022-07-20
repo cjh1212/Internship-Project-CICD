@@ -1,7 +1,7 @@
 name: CI
 
 on:
-  pull_request:
+  push:
     branches:
       - dev
 
@@ -26,8 +26,9 @@ jobs:
           flake8: true
           
   build:
-    name: build
+    name: build container
     runs-on: ubuntu-latest
+    needs: static_test
     steps:
       - name: Check
         uses: actions/checkout@v2
@@ -38,4 +39,11 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: 
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR }}
+      - name: build push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          builder: ${{ steps.buildx.outputs.name }}
+          push: ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
