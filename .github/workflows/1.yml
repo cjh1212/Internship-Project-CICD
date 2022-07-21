@@ -54,7 +54,7 @@ jobs:
           docker cp ${DOCPID}:/details.txt ./details.txt
           cat ./details.txt >> $DETAILS
           if [[ -s ${DETAILS} ]]; then
-            echo 1
+            echo 11
           else
             cat ddd.txt
       - name: build push
