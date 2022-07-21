@@ -52,7 +52,7 @@ jobs:
           touch ./docpid
           docker ps | awk 'FNR == 2 {print $1}' >> ./docpid
           cat ./docpid
-          docker cp romantic_wilbur:/details.txt ./details.txt
+          docker cp dckr:/details.txt ./details.txt
           cat ./details.txt
           docker kill dckr
           docker rm dckr
