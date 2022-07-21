@@ -47,15 +47,10 @@ jobs:
           tags: test_tag
       - name: test
         run: |
-          docker run -it test_tag
-          echo "docker ps | awk 'FNR == 2 {print $1}'" >> "$DOCPID"
-          echo ${DOCPID}
-          docker cp ${DOCPID}:/details.txt ./details.txt
+          docker run -d --name dckr test_tag
+          docker cp dckr:/details.txt ./details.txt
           cat ./details.txt >> $DETAILS
-          if [[ -s ${DETAILS} ]]; then
-            echo 11
-          else
-            cat ddd.txt
+          echo ${DETAILS}
       - name: build push
         uses: docker/build-push-action@v3
         with: 
