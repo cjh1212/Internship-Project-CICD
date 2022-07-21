@@ -31,5 +31,5 @@ print(accuracy_score(y_test, y_pred))
 
 message = str(accuracy_score(y_test, y_pred))
 
-with open('tails.txt', 'w') as outfile:
+with open('details.txt', 'w') as outfile:
     outfile.write(message)
