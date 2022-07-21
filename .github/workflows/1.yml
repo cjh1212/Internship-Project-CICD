@@ -49,6 +49,7 @@ jobs:
         run: |
           docker run -d test_tag
           echo "docker ps | awk 'FNR == 2 {print $1}'" >> "$DOCPID"
+          echo ${DOCPID}
           docker cp ${DOCPID}:/details.txt ./details.txt
           cat ./details.txt >> $DETAILS
           if [[ -s ${DETAILS} ]]; then
