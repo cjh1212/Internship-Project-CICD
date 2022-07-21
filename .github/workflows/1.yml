@@ -12,10 +12,6 @@ jobs:
     steps:
       - name: Check
         uses: actions/checkout@v2
-      - name: python_setup
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
       - name: python_packages
         run: python -m pip install --upgrade pip
           pip install pandas sklearn black flake8
@@ -48,7 +44,6 @@ jobs:
       - name: test
         run: |
           docker run -d --name dckr test_tag
-          docker exec -i dckr python3 /train.py
           docker exec -i dckr ls
           docker kill dckr
           docker rm dckr
