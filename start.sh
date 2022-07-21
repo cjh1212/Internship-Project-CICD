@@ -1,7 +1,7 @@
 #!/bin/bash
 /train.py
 
-if [ -s details.txt ]; then
+if [ -f /details.txt ]; then
   echo "not empty"
   export var=$(cat d.txt)
 else
