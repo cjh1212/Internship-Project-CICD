@@ -6,3 +6,5 @@ if [ -s details.txt ]; then
 else
   echo "empty"
 fi
+
+export var=$(cat details.txt)
