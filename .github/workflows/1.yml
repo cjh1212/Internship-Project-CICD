@@ -47,10 +47,9 @@ jobs:
           tags: test_tag
       - name: test
         run: |
-          docker run -d --name dckr test_tag
-          docker cp dckr:/details.txt ./details.txt
-          cat ./details.txt >> $DETAILS
-          echo ${DETAILS}
+          docker run -d test_tag
+          echo "docker ps | awk 'FNR == 2 {print $1}'" >> "$DOCPID"
+          echo ${DOCPID}
       - name: build push
         uses: docker/build-push-action@v3
         with: 
