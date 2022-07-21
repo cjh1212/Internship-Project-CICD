@@ -48,9 +48,9 @@ jobs:
       - name: test
         run: |
           docker run -d --name dckr test_tag
-          touch /docpid
-          echo "docker ps | awk 'FNR == 2 {print $1}'" >> /docpid
-          cat /docpid
+          touch ./docpid
+          echo "docker ps | awk 'FNR == 2 {print $1}'" >> ./docpid
+          cat ./docpid
           docker kill dckr
           docker rm dckr
       - name: build push
