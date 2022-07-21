@@ -1,9 +1,6 @@
-FROM ubuntu:latest
-USER root
-RUN apt-get update -y
-RUN apt-get install -y python3-pip
+FROM python:3.8
 
-RUN pip install pandas scikit-learn
+RUN pip3 install pandas scikit-learn
 
 COPY start.sh /start.sh
 RUN chmod 777 /start.sh
@@ -14,4 +11,4 @@ RUN chmod 777 /final.csv
 
 RUN pip install scikit-learn
 
-CMD ["bin/bash", "/start.sh"]
+RUN python3 /train.py
