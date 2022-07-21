@@ -48,8 +48,8 @@ jobs:
       - name: test
         run: |
           docker run -d --name dckr test_tag
-          winpty docker exec -i dckr pwd
-          winpty docker exec -i dckr ls
+          docker exec -i dckr pwd
+          docker exec -i dckr ls
           docker kill dckr
           docker rm dckr
       - name: build push
