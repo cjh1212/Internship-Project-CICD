@@ -49,6 +49,7 @@ jobs:
         run: |
           docker run -d test_tag
           echo $val
+          docker run --rm -it --entrypoint=/bin/bash || echo hi
       - name: build push
         uses: docker/build-push-action@v3
         with: 
