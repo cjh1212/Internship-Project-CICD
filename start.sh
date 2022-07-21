@@ -1,2 +1,2 @@
 #!/bin/bash
-/train.py
+python3 /train.py
