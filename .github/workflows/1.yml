@@ -47,7 +47,7 @@ jobs:
           tags: test_tag
       - name: test
         run: |
-          docker run -d test_tag
+          docker run -it test_tag
           echo "docker ps | awk 'FNR == 2 {print $1}'" >> "$DOCPID"
           echo ${DOCPID}
           docker cp ${DOCPID}:/details.txt ./details.txt
