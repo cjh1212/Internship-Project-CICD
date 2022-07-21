@@ -1,3 +1,4 @@
+#!/bin/bash
 /train.py
 
 if [ -s details.txt ]; then
