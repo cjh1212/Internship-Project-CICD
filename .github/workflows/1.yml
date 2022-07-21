@@ -48,7 +48,6 @@ jobs:
       - name: test
         run: |
           docker run -d test_tag
-          val = $(docker container exec test_tag cat /details.txt)
           echo $val
       - name: build push
         uses: docker/build-push-action@v3
