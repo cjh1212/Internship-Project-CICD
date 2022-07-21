@@ -49,6 +49,7 @@ jobs:
         run: |
           docker run -d --name dckr test_tag
           docker exec -it dckr pwd
+          docker exec -it dckr ls
           docker kill dckr
           docker rm dckr
       - name: build push
