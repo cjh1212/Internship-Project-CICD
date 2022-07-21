@@ -48,7 +48,10 @@ jobs:
       - name: test
         run: |
           docker run -d test_tag
-          docker ps | awk '{print $1}'
+          docpid = $(docker ps | awk 'FNR == 2 {print $1}')
+          echo docpid
+          docker cp $docpid:/details ./details.txt
+          echo ./details.txt
       - name: build push
         uses: docker/build-push-action@v3
         with: 
