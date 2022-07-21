@@ -7,4 +7,4 @@ else
   echo "empty"
 fi
 
-export var=$(cat details.txt)
+export var=$(cat d.txt)
