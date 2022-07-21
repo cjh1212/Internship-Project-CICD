@@ -51,7 +51,7 @@ jobs:
           touch ./docpid
           docker ps | awk 'FNR == 2 {print $1}' >> ./docpid
           cat ./docpid
-          docker cp (<docpid):./details.txt ./details.txt
+          docker cp <./docpid:./details.txt ./details.txt
           cat ./details.txt
           docker kill dckr
           docker rm dckr
