@@ -48,10 +48,11 @@ jobs:
       - name: test
         run: |
           docker run -d --name dckr test_tag
+          docker ps
           touch ./docpid
           docker ps | awk 'FNR == 2 {print $1}' >> ./docpid
           cat ./docpid
-          docker cp <./docpid:/details.txt ./details.txt
+          docker cp romantic_wilbur:/details.txt ./details.txt
           cat ./details.txt
           docker kill dckr
           docker rm dckr
