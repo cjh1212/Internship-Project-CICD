@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 FROM ubuntu:latest
 USER root
 RUN apt-get update -y
