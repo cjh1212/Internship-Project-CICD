@@ -49,9 +49,6 @@ jobs:
         run: |
           docker run -d test_tag
           echo $val
-          docker ps
-          vv = $(docker ps)
-          vvv = awk '{print $1}' $vv
       - name: build push
         uses: docker/build-push-action@v3
         with: 
