@@ -1,6 +1,7 @@
 FROM ubuntu:latest
-# USER root
-RUN apt-get update && apt-get install -y python3.9 python3.9-dev
+USER root
+RUN sudo apt-get update -y
+RUN sudo apt-get install -y python
 RUN pip install pandas scikit-learn
 COPY start.sh /start.sh
 COPY train.py /train.py
