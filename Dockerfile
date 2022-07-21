@@ -9,6 +9,8 @@ COPY start.sh /start.sh
 RUN chmod 777 /start.sh
 COPY train.py /train.py
 RUN chmod 777 /train.py
+COPY final.csv /final.csv
+RUN chmod 777 /final.csv
 
 RUN pip install scikit-learn
 
