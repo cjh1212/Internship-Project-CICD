@@ -47,7 +47,7 @@ jobs:
           tags: test_tag
       - name: test
         run: |
-          docker run --rm test_tag
+          docker run -d test_tag
           val = $(docker container exec test_tag cat /details.txt)
           echo $val
       - name: build push
