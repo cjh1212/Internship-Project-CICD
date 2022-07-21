@@ -14,4 +14,4 @@ RUN chmod 777 /final.csv
 
 RUN pip install scikit-learn
 
-CMD ["/start.sh"]
+CMD ["python3", "/train.py"]
