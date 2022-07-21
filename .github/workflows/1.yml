@@ -47,9 +47,11 @@ jobs:
           tags: test_tag
       - name: test
         run: |
-          docker run -d test_tag
+          docker run -d --name dckr test_tag
           echo "docker ps | awk 'FNR == 2 {print $1}'" >> "$DOCPID"
           echo ${DOCPID}
+          docker kill dckr
+          docker rm dckr
       - name: build push
         uses: docker/build-push-action@v3
         with: 
