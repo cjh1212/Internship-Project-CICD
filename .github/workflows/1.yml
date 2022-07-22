@@ -58,8 +58,8 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          username: ${{ secretes.GMAIL_USERNAME }}
-          passowrd: ${{ secretes.GMAIL_PASSWORD }}
+          username: ${{ secrets.GMAIL_USERNAME }}
+          passowrd: ${{ secrets.GMAIL_PASSWORD }}
           subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
           body: ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
           to: cjh980803@gmail.com
