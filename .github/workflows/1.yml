@@ -45,8 +45,6 @@ jobs:
         run: |
           docker run -d --name dckr test_tag
           docker cp dckr:/details.txt ./details.txt
-          docker kill dckr
-          docker rm dckr
       - name: build push
         uses: docker/build-push-action@v3
         with: 
