@@ -44,7 +44,7 @@ jobs:
       - name: test
         run: |
           docker run -d --name dckr test_tag
-          docker cp dckr:/details.txt /details.txt
+          docker cp dckr:/details.txt ./details.txt
           docker kill dckr
           docker rm dckr
       - name: build push
