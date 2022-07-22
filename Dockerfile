@@ -1,4 +1,4 @@
-FROM python:3.8.2-alpine
+FROM python:latest
 
 RUN pip install pandas scikit-learn
 
