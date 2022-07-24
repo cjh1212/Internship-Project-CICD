@@ -63,3 +63,4 @@ jobs:
           subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
           body: ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
           to: cjh980803@gmail.com
+          from: jihun983@gmail.com
