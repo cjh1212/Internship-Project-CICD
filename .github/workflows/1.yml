@@ -64,3 +64,4 @@ jobs:
           body: ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
           to: cjh980803@gmail.com
           from: ss
+          ignore_cert: true
