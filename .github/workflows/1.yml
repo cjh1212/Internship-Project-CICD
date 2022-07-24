@@ -53,16 +53,14 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/test
       - name: send mail
-        uses: devellany/send-mailer@v1.0.2
+        uses: wadeww/send-email-action@master
         with:
-          host: smtp.google.com
+          server_address: smtp.google.com
           port: 465
-          account: ${{ secrets.GMAIL_USERNAME }}
+          username: ${{ secrets.GMAIL_USERNAME }}
           password: ${{ secrets.GMAIL_PASSWORD }}
           from: jihun983@gmail.com
           to: cjh980803@gmail.com
           subject:  ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
           body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
-          contentType: text/Plain
-          
             
