@@ -59,8 +59,8 @@ jobs:
           port: 465
           account: ${{ secrets.GMAIL_USERNAME }}
           password: ${{ secrets.GMAIL_PASSWORD }}
-          sender: ss
           from: jihun983@gmail.com
+          to: cjh980803@gmail.com
           subject:  ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
           body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
           contentType: text/Plain
