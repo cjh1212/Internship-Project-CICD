@@ -12,7 +12,7 @@ from sklearn import preprocessing
 import os
 os.environ["WANDB_DISABLED"] = "true"
 
-batch_size = 16
+batch_size = 32
 warm_up = 200
 seed = 12
 max_length = 128
