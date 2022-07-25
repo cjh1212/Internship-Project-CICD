@@ -53,12 +53,12 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/test
       - name: send mail
-        uses: wadeww/send-email-action@master
+        uses: AlexisMateo/sendmail-action@5
         with:
-          server_address: smtp.google.com
-          port: 465
-          username: ${{ secrets.GMAIL_USERNAME }}
-          password: ${{ secrets.GMAIL_PASSWORD }}
+          smtp-server: smtp.google.com
+          smtp-server-port: 465
+          auth-user: ${{ secrets.GMAIL_USERNAME }}
+          auth-password: ${{ secrets.GMAIL_PASSWORD }}
           from: jihun983@gmail.com
           to: cjh980803@gmail.com
           subject:  ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
