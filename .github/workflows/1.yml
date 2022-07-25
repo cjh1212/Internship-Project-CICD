@@ -20,7 +20,7 @@ jobs:
           black: true
           flake8: true
       - name: train
-        run: python3 preprocessing_train.py
+        run: python preprocessing_train.py
           
   build:
     name: build container
