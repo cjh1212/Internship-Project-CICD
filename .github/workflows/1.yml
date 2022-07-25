@@ -13,7 +13,7 @@ jobs:
       - name: Check
         uses: actions/checkout@v2
       - name: python_packages
-        run: pip install pandas sklearn black flake8 transformers datasets torch
+        run: py -m pip install pandas sklearn black flake8 transformers datasets torch
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
