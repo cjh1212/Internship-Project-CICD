@@ -8,7 +8,7 @@ on:
 jobs:
   static_test:
     name: static_test
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Check
         uses: actions/checkout@v2
