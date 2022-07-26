@@ -43,21 +43,15 @@ jobs:
           gsutil cp gs://bucket_cjh980803/train_data.csv .
           gcloud compute scp ./train_data.csv cjh980803@instance:~/ --zone=asia-northeast3-a
   train:
-    runs-on: ubuntu-latest
     name: train
-    needs: copy
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: GCP
-        uses: google-github-actions/auth@v0
-        with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-
-      - name: Set up SDK
-        uses: google-github-actions/setup-gcloud@v0
-        
       - name: test
-        run: |
-          gcloud compute ssh instance --zone=asia-northeast3-a -- 'echo hello'
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: echo hello
     
