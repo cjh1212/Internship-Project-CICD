@@ -42,5 +42,10 @@ jobs:
       - run: |-
           gsutil cp gs://bucket_cjh980803/train_data.csv .
           gcloud compute scp ./train_data.csv cjh980803@instance:~/ --zone=asia-northeast3-a
-      - run: |-
-          gcloud compute ssh instance --command "python3 preprocess_train.py" --zone=asia-northeast3-a
+      - id: 'compute-ssh'
+        uses: 'google-github-actions/ssh-compute@v0'
+        with:
+          instance_name: 'instance'
+          zone: 'asia-northeast3-a'
+          ssh_private_key: ${{ secrete.GCP_SSH_PRIVATE_KEY }}
+          command: 'echo Hello world'
