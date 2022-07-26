@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v3
       - name: python_packages
         run: python -m pip install --upgrade pip
-          pip install pandas sklearn transformers datasets Beautifulsoup
+          pip install pandas sklearn transformers datasets Beautifulsoup4
       - name: collection
         run: python3 collection.py
         
