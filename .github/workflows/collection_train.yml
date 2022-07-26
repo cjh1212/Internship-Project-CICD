@@ -40,7 +40,7 @@ jobs:
       - name: Set up cloud SDK
         uses: google-github-actions/setup-gcloud@v0
       - run: |-
-          gsutil cp gs://bucket_cjh980803/train_data.csv .
+          gsutil cp ./1.py .
           gcloud compute copy-files train_data.csv instance:~/ --zone=asia-northeast3-a
         
           
