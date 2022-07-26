@@ -47,5 +47,5 @@ jobs:
         with:
           instance_name: 'instance'
           zone: 'asia-northeast3-a'
-          ssh_private_key: ${{ secrete.GCP_SSH_PRIVATE_KEY }}
+          ssh_private_key: ${{ secrets.GCP_SSH_PRIVATE_KEY }}
           command: 'echo Hello world'
