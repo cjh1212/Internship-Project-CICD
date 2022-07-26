@@ -48,9 +48,9 @@ jobs:
           instance_name: 'instance'
           zone: 'asia-northeast3-a'
           ssh_private_key: '$ {{ secrets.GCP_SSH_PRIVATE_KEY }}'
+          command: 'echo compute-ssh'
       - id: 'train'
         run: |-
-          cd ../runner
           python3 preprocessing_train.py
         
           
