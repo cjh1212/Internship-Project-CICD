@@ -1,9 +1,8 @@
 name: "Data collection and train"
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: "0 0 * * *"
     
 jobs:
   data_collection:
@@ -42,6 +41,7 @@ jobs:
       - run: |-
           gsutil cp gs://bucket_cjh980803/train_data.csv .
           gcloud compute scp ./train_data.csv cjh980803@instance:~/ --zone=asia-northeast3-a
+          
   train:
     name: train
     runs-on: ubuntu-latest
