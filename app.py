@@ -37,9 +37,9 @@ def result():
         if idx == 0:
             cat = 'Business'
         elif idx == 1:
-            cat = 'Technology'
-        else:
             cat = 'Sports'
+        else:
+            cat = 'Technology'
         result = cat
         return render_template("result.html", result = result)
  
