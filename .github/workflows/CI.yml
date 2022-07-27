@@ -64,4 +64,3 @@ jobs:
           gcloud compute scp ./app.py cjh980803@instance:~/ --zone=asia-northeast3-a
           gcloud compute scp ./index.html cjh980803@instance:~/templates/ --zone=asia-northeast3-a
           gcloud compute scp ./result.html cjh980803@instance:~/templates/ --zone=asia-northeast3-a
-          
