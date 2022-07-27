@@ -1,14 +1,10 @@
 FROM python:latest
 
-RUN pip install pandas scikit-learn
+RUN pip install pandas datasets transformers Flask gunicorn
 
-COPY start.sh /start.sh
-RUN chmod 777 /start.sh
-COPY train.py /train.py
-RUN chmod 777 /train.py
-COPY final.csv /final.csv
-RUN chmod 777 /final.csv
+COPY ./app.py /app
+COPY ./templates /app/templates
 
-RUN pip install scikit-learn
+WORKDIR /app
 
-RUN python3 /train.py
+CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
