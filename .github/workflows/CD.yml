@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
-          script: whoami
+          script: chmod 777 Dockerfile
   
   docker_run:
     name: run
