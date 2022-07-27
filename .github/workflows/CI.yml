@@ -13,7 +13,7 @@ jobs:
       - name: Check
         uses: actions/checkout@v2
       - name: python_packages
-        run: black flake8
+        run: pip install black flake8
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
