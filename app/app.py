@@ -15,30 +15,21 @@ def result():
 
     
     if request.method == 'POST':
-        tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+                tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
         model = AutoModelForSequenceClassification.from_pretrained("model/")
 
         def tokenize_function(example):
             return tokenizer(example['title'], truncation=True)
             
         sentence = request.form['sentence']
-        
         dictionary = {'title': [sentence]}
-
         df = pd.DataFrame(dictionary)
-
-        dataset = Dataset.from_pandas(df)
         
-
-        dataset = load_dataset('csv', data_files='train_data.csv')['train']
-        dataset = dataset.map(tokenize_function, remove_columns=['label'])
+        dataset = Dataset.from_pandas(df)
+        dataset = dataset.map(tokenize_function)
 
         trainer = Trainer(model=model, tokenizer=tokenizer)
-
         prediction = trainer.predict(dataset)
-        
-        prediction = trainer.predict(dataset)
-        
         prediction = prediction[0][0].tolist()
 
         idx = prediction.index(max(prediction))
@@ -49,7 +40,6 @@ def result():
             cat = 'Technology'
         else:
             cat = 'Sports'
-        
         result = cat
         return render_template("result.html", result = result)
  
