@@ -2,8 +2,8 @@ FROM python:latest
 
 RUN pip install pandas datasets transformers Flask gunicorn
 
-RUN mkdir /app/templates
-RUN mkdir /app/model
+RUN mkdir -p /app/templates
+RUN mkdir -p /app/model
 
 COPY ./app.py /app
 COPY ./templates/index.html /app/templates
