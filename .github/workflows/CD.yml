@@ -21,7 +21,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             chmod 777 Dockerfile
-            docker build flask_app
+            docker build -t flask_app .
             docker run -d -p 0.0.0.0:5000:5000/tcp --name flask_docker flask_app:latest
             
   
