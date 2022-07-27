@@ -8,19 +8,17 @@ on:
 jobs:
   static_test:
     name: static_test
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Check
         uses: actions/checkout@v2
       - name: python_packages
-        run: py -m pip install pandas sklearn black flake8 transformers datasets torch
+        run: black flake8
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
           black: true
           flake8: true
-      - name: train
-        run: python preprocessing_train.py
           
   build:
     name: build container
