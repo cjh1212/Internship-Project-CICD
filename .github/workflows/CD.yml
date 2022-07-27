@@ -1,0 +1,37 @@
+name: CD
+
+on:
+  push:
+    branches:
+      -master
+      
+jobs:
+  build_container:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check
+        uses: actions/checkout@v3
+      - name: docker_image
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secretes.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: docker build -t flask_app .
+  
+  docker_run:
+    name: run
+    runs-one: ubuntu-latest
+    steps:
+      - name: Check
+        uses: actions/checkout@v3
+      - name: run
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: docker run -d -p 0.0.0.0:5000:5000/tcp --name flask_docker flask_app:latest
