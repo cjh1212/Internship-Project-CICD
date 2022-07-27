@@ -3,10 +3,14 @@ FROM python:latest
 RUN pip install pandas datasets transformers Flask gunicorn
 
 RUN mkdir /app/templates
+RUN mkdir /app/model
 
 COPY ./app.py /app
-COPY ./templates /app/templates
-COPY ./model /app
+COPY ./templates/index.html /app/templates
+COPY ./templates/result.html /app/templates
+COPY ./model/config.json /app/model
+COPY ./model/pytorch_model.bin /app/model
+COPY ./model/training_args.bin /app/model
 
 WORKDIR /app
 
