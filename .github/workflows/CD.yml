@@ -19,19 +19,9 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
-          script: chmod 777 Dockerfile
+          script: |
+            chmod 777 Dockerfile
+            docker build -t flask_app
+            docker run -d -p 0.0.0.0:5000:5000/tcp --name flask_docker flask_app:latest
+            
   
-  docker_run:
-    name: run
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check
-        uses: actions/checkout@v3
-      - name: run
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PASSWORD }}
-          port: ${{ secrets.SSH_PORT }}
-          script: docker run -d -p 0.0.0.0:5000:5000/tcp --name flask_docker flask_app:latest
