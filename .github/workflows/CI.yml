@@ -48,17 +48,21 @@ jobs:
       - name: upload_flask_app
         uses: google-github-actions/upload-cloud-storage@v0
         with:
-          path: './app'
+          path: './app.py'
           destination: 'bucket_cjh980803'
+      - name: upload_templates
+        uses: google-github-actions/upload-cloud-storage@v0
+        with:
+          path: './templates'
       - name: set up cloud SDK
         uses: google-github-actions/setup-gcloud@v0
       - name: copy files to compute engine
         run: |-
           gsutil cp gs://bucket_cjh980803/Dockerfile .
           gsutil cp gs://bucket_cjh980803/preprocessing_train.py .
-          gsutil cp gs://bucket_cjh980803/app/app.py .
-          gsutil cp gs://bucket_cjh980803/app/templates/index.html .
-          gsutil cp gs://bucket_cjh980803/app/templates/result.html .
+          gsutil cp gs://bucket_cjh980803/app.py .
+          gsutil cp gs://bucket_cjh980803/templates/index.html .
+          gsutil cp gs://bucket_cjh980803/templates/result.html .
           gcloud compute scp ./Dockerfile cjh980803@instance:~/ --zone=asia-northeast3-a
           gcloud compute scp ./preprocessing_train.py cjh980803@instance:~/ --zone=asia-northeast3-a
           gcloud compute scp ./app.py cjh980803@instance:~/ --zone=asia-northeast3-a
