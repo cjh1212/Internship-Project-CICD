@@ -93,3 +93,4 @@ with open('results.txt', 'w+') as outfile:
   outfile.write(message)
   
 trainer.save_model('model')
+trainer.save_model('test/model')
