@@ -4,7 +4,7 @@ def response_test():
     response = requests.post(
         'http://localhost:5000/result',
         data = {
-            'sentnce': 'ddd dd efqwecd dfe'
+            'sentence': 'ddd dd efqwecd dfe'
         }
     )
 
