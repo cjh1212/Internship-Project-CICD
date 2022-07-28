@@ -2,7 +2,7 @@ import requests
 
 def response_test():
     response = requests.post(
-        'http://localhost:5000/result',
+        'http://34.64.254.235:5001/result',
         data = {
             'sentence': 'ddd dd efqwecd dfe'
         }
