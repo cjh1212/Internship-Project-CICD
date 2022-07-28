@@ -85,8 +85,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd test
-            chmod 777 test/Dockerfile
-            docker build . -t flask_app1 -f test/Dockerfile
+            chmod 777 Dockerfile
+            docker build -t flask_app1 .
             docker run -d -p 0.0.0.0:5001:5000/tcp --name flask_docker1 flask_app1:latest
       - name: test status
         run: python3 dynamic_test.py
