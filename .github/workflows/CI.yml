@@ -84,11 +84,19 @@ jobs:
           key: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            docker stop flask_docker
-            docker rm flask_docker
             chmod 777 Dockerfile
-            docker build -t flask_app .
-            docker run -d -p 0.0.0.0:5000:5000/tcp --name flask_docker flask_app:latest
+            docker build -t flask_app1 .
+            docker run -d -p 0.0.0.0:5001:5000/tcp --name flask_docker1 flask_app1:latest
       - name: test status
         run: python3 dynamic_test.py
+      - name: delete
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            docker stop flask_docker1
+            docker rm flask_docker1
             
