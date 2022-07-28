@@ -1,7 +1,7 @@
 name: CI
 
 on:
-  pull_request:
+  push:
     branches:
       - dev
 
@@ -21,10 +21,7 @@ jobs:
           flake8: true
       - name: docker build test
         run: docker build -t test .
-        
-        
           
-  
   upload:
     name: upload
     runs-on: ubuntu-latest
@@ -72,3 +69,26 @@ jobs:
           gcloud compute scp ./app.py cjh980803@instance:~/ --zone=asia-northeast3-a
           gcloud compute scp ./index.html cjh980803@instance:~/templates/ --zone=asia-northeast3-a
           gcloud compute scp ./result.html cjh980803@instance:~/templates/ --zone=asia-northeast3-a
+          
+  dynamic_test:
+    name: dynamic_test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check
+        uses: actions/checkout@v3
+      - name: test response
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            docker stop flask_docker
+            docker rm flask_docker
+            chmod 777 Dockerfile
+            docker build -t flask_app .
+            docker run -d -p 0.0.0.0:5000:5000/tcp --name flask_docker flask_app:latest
+      - name: test status
+        run: python3 dynamic_test.py
+            
