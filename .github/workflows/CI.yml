@@ -20,6 +20,8 @@ jobs:
           black: true
           flake8: true
       - name: docker build test
+        run: docker build -t test .
+        
         
           
   
