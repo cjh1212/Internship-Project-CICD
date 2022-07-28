@@ -15,7 +15,7 @@ def result():
 
     
     if request.method == 'POST':
-        tokenizer = AutoTokenizer.from_pretrained('tokenization/')
+        tokenizer = AutoTokenizer.from_pretrained('t/')
         model = AutoModelForSequenceClassification.from_pretrained("model/")
 
         def tokenize_function(example):
@@ -44,4 +44,4 @@ def result():
         return render_template("result.html", result = result)
  
 if __name__ == '__main__':
-    app.run(debug=True, host = '0.0.0.0')
+    app.run(debug=True)
