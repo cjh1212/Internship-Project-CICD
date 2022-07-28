@@ -73,6 +73,7 @@ jobs:
   dynamic_test:
     name: dynamic_test
     runs-on: ubuntu-latest
+    needs: upload
     steps:
       - name: Check
         uses: actions/checkout@v3
