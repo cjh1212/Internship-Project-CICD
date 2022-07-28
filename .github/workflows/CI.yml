@@ -64,11 +64,11 @@ jobs:
           gsutil cp gs://bucket_cjh980803/app.py .
           gsutil cp gs://bucket_cjh980803/templates/index.html .
           gsutil cp gs://bucket_cjh980803/templates/result.html .
-          gcloud compute scp ./Dockerfile cjh980803@instance:~/ --zone=asia-northeast3-a
-          gcloud compute scp ./preprocessing_train.py cjh980803@instance:~/ --zone=asia-northeast3-a
-          gcloud compute scp ./app.py cjh980803@instance:~/ --zone=asia-northeast3-a
-          gcloud compute scp ./index.html cjh980803@instance:~/templates/ --zone=asia-northeast3-a
-          gcloud compute scp ./result.html cjh980803@instance:~/templates/ --zone=asia-northeast3-a
+          gcloud compute scp ./Dockerfile cjh980803@instance:~/test/ --zone=asia-northeast3-a
+          gcloud compute scp ./preprocessing_train.py cjh980803@instance:~/test/ --zone=asia-northeast3-a
+          gcloud compute scp ./app.py cjh980803@instance:~/test/ --zone=asia-northeast3-a
+          gcloud compute scp ./index.html cjh980803@instance:~/test/templates/ --zone=asia-northeast3-a
+          gcloud compute scp ./result.html cjh980803@instance:~/test/templates/ --zone=asia-northeast3-a
           
   dynamic_test:
     name: dynamic_test
