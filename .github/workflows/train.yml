@@ -1,4 +1,4 @@
-name: "Data collection and train"
+name: "train"
 
 on:
   schedule:
