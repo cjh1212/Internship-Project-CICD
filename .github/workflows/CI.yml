@@ -10,15 +10,19 @@ jobs:
     name: static_test
     runs-on: ubuntu-latest
     steps:
-      - name: Check
-        uses: actions/checkout@v2
-      - name: python_packages
-        run: pip install black flake8
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
+      - uses: actions/checkout@v2
+      - name: Check files using the black formatter
+        uses: rickstaa/action-black@v1
+        id: action_black
         with:
-          black: true
-          flake8: true
+          black_args: "."
+      - name: Annotate diff changes using reviewdog
+        if: steps.action_black.outputs.is_formatted == 'true'
+        uses: reviewdog/action-suggester@v1
+        with:
+          tool_name: blackfmt
+      - name: GitHub Action for pylint
+        uses: cclauss/GitHub-Action-for-pylint@0.7.0
           
   merge:
     name: merge
