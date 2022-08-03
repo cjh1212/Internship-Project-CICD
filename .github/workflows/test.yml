@@ -1,47 +1,18 @@
 name: test
-on: [push]
+
+on:
+  push:
+    branches:
+      - dev
+      
 jobs:
-  myjob:
+  build_and_deploy:
+    name: build and deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Run a one-line script
-      run: echo test
-    - name: python setup
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-        
-        
-    - name: python packages
-      run: python -m pip install --upgrade pip
-        pip install pandas sklearn black flake8
-        
-    - name: Run linters
-      uses: wearerequired/lint-action@v2
-      with:
-        black: true
-        flake8: true
-      
-    - name: py1
-      run: python3 1.py
-    - name: py2
-      run: python3 2.py
-    - name: train
-      run: python3 train.py
-      
-    - id: get-accuracy
-      run: |
-        body=$(cat details.txt)
-        echo ::set-output name=body::$body
-      
-# Set action's output parameter
-# ::set-output name={name}::{value}
-
-# ::command-name parameter1=data1,parameter2=data2::value
-
-    - name: comment
-      uses: peter-evans/commit-comment@v2
-      with:
-        body: ${{ steps.get-accuracy.outputs.body }}
-        
+      - name: Check
+        uses: actions/checkout@v3
+      - name: python package
+        run: pip install requests pytest
+      - name: test
+        run: pytest dynamic_test.py
