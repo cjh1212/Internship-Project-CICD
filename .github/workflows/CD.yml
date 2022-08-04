@@ -1,34 +1,17 @@
-name: CI
+name: CD
 
 on:
   push:
     branches:
-      - dev
-
+      - main
+      
 jobs:
-  static_test:
-    name: static_test
+  upload:
+    name: upload
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Check files using the black formatter
-        uses: rickstaa/action-black@v1
-        id: action_black
-        with:
-          black_args: "."
-      - name: GitHub Action for pylint
-        uses: cclauss/GitHub-Action-for-pylint@0.7.0
-          
-  merge:
-    name: merge
-    runs-on: ubuntu-latest
-    needs: static_test
-    permissions:
-      contents: 'read'
-      id-token: 'write'
     steps:
       - name: Check
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: auth
         uses: google-github-actions/auth@v0
         with:
@@ -62,36 +45,21 @@ jobs:
           gsutil cp gs://bucket_cjh980803/app.py .
           gsutil cp gs://bucket_cjh980803/templates/index.html .
           gsutil cp gs://bucket_cjh980803/templates/result.html .
-          gcloud compute scp ./Dockerfile cjh980803@instance:~/test/ --zone=asia-northeast3-a
-          gcloud compute scp ./preprocessing_train.py cjh980803@instance:~/test/ --zone=asia-northeast3-a
-          gcloud compute scp ./app.py cjh980803@instance:~/test/ --zone=asia-northeast3-a
-          gcloud compute scp ./index.html cjh980803@instance:~/test/templates/ --zone=asia-northeast3-a
-          gcloud compute scp ./result.html cjh980803@instance:~/test/templates/ --zone=asia-northeast3-a
-      - name: build test docker
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PASSWORD }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            cd test
-            chmod 777 Dockerfile
-            docker build -t flask_app1 .
-            docker run -d -p 0.0.0.0:5001:5000/tcp --name flask_docker1 flask_app1:latest
+          gcloud compute scp ./Dockerfile cjh980803@instance:~/ --zone=asia-northeast3-a
+          gcloud compute scp ./preprocessing_train.py cjh980803@instance:~/ --zone=asia-northeast3-a
+          gcloud compute scp ./app.py cjh980803@instance:~/ --zone=asia-northeast3-a
+          gcloud compute scp ./index.html cjh980803@instance:~/templates --zone=asia-northeast3-a
+          gcloud compute scp ./result.html cjh980803@instance:~/templates/ --zone=asia-northeast3-a
           
-  dynamic_test:
-    name: dynamic_test
+  
+  build_and_deploy:
+    name: build and deploy
     runs-on: ubuntu-latest
-    needs: merge
+    needs: upload
     steps:
       - name: Check
         uses: actions/checkout@v3
-      - name: install pytest
-        run: pip install pytest
-      - name: test status
-        run: pytest
-      - name: delete
+      - name: docker_image
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -99,6 +67,11 @@ jobs:
           key: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            docker stop flask_docker1
-            docker rm flask_docker1
+            docker stop flask_docker
+            docker rm flask_docker
+            docker system prune -a
+            chmod 777 Dockerfile
+            docker build -t flask_app .
+            docker run -d -p 0.0.0.0:5000:5000/tcp --name flask_docker flask_app:latest
             
+  
