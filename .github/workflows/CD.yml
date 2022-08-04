@@ -69,7 +69,7 @@ jobs:
           script: |
             docker stop flask_docker
             docker rm flask_docker
-            docker system prune -a
+            docker system prune -a -f
             chmod 777 Dockerfile
             docker build -t flask_app .
             docker run -d -p 0.0.0.0:5000:5000/tcp --name flask_docker flask_app:latest
