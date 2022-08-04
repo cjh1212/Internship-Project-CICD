@@ -60,13 +60,13 @@ test_dataset = test_dataset.map(tokenize_function, batched=True)
 
 
 training_args = TrainingArguments(
-    output_dir='./results',          # output directory
-    num_train_epochs=1,              # total number of training epochs
-    per_device_train_batch_size=batch_size,  # batch size per device during training
-    per_device_eval_batch_size=batch_size,   # batch size for evaluation
-    warmup_steps=warm_up,                # number of warmup steps for learning rate scheduler
-    weight_decay=0.01,               # strength of weight decay
-    logging_dir='./logs',            # directory for storing logs
+    output_dir='./results',          
+    num_train_epochs=1,              
+    per_device_train_batch_size=batch_size,  
+    per_device_eval_batch_size=batch_size,   
+    warmup_steps=warm_up,                
+    weight_decay=0.01,               
+    logging_dir='./logs',            
     logging_steps=100,
     # save_strategy="epoch",
     evaluation_strategy="epoch",
@@ -75,11 +75,11 @@ training_args = TrainingArguments(
 )
 
 trainer = Trainer(
-    model=model,                         # the instantiated 🤗 Transformers model to be trained
-    args=training_args,                  # training arguments, defined above
-    train_dataset=train_dataset,         # training dataset
+    model=model,     
+    args=training_args,        
+    train_dataset=train_dataset,      
     eval_dataset=dev_dataset,
-    compute_metrics=compute_metrics,          # evaluation dataset
+    compute_metrics=compute_metrics,         
 )
 
 
