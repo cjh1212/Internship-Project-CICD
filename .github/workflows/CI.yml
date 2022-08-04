@@ -67,15 +67,7 @@ jobs:
           gcloud compute scp ./app.py cjh980803@instance:~/test/ --zone=asia-northeast3-a
           gcloud compute scp ./index.html cjh980803@instance:~/test/templates/ --zone=asia-northeast3-a
           gcloud compute scp ./result.html cjh980803@instance:~/test/templates/ --zone=asia-northeast3-a
-          
-  dynamic_test:
-    name: dynamic_test
-    runs-on: ubuntu-latest
-    needs: merge
-    steps:
-      - name: Check
-        uses: actions/checkout@v3
-      - name: test response
+      - name: build test docker
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -87,6 +79,14 @@ jobs:
             chmod 777 Dockerfile
             docker build -t flask_app1 .
             docker run -d -p 0.0.0.0:5001:5000/tcp --name flask_docker1 flask_app1:latest
+          
+  dynamic_test:
+    name: dynamic_test
+    runs-on: ubuntu-latest
+    needs: merge
+    steps:
+      - name: Check
+        uses: actions/checkout@v3
       - name: install pytest
         run: pip install pytest
       - name: test status
