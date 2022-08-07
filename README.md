@@ -3,8 +3,9 @@
 많은 기업들의 머신러닝 수요가 증가하면서 ML Ops 또한 매우 중요한 영역으로 자리 잡았습니다.
 
 ## 정의
-**NVIDIA**: 기업이 AI를 활용하기 위한 최적의 방식들의 집합이다.
-**Google**: ML 시스템 개발과 ML 시스템 운영을 통합하는 것을 목표로하는 ML 엔지니어링 문화 및 방식이다.
+**NVIDIA**: 기업이 AI를 활용하기 위한 최적의 방식들의 집합이다.<br>
+**Google**: ML 시스템 개발과 ML 시스템 운영을 통합하는 것을 목표로하는 ML 엔지니어링 문화 및 방식이다.<br>
+
 **내 생각**: 전체적인 머신러닝 시스템에 관여하여 리소스 관리, 모니터링, 자동화를 통하여 사이언티스트들이 모델 개발을 효율적으로할 수 있게 도와주는 시스템이다.
 
 ## 특징
@@ -22,9 +23,21 @@
 개발 / 학습 - model, image (docker), artifact
 서빙 - Experimental Path, Production Path
 
+```mermaid
+graph
+A[개발 / 학습] --> B[image]
+A --> C[Model]
+A --> D[Artifact]
+```
+```mermaid
+graph
+A((서빙)) --> B((Experimental Path))
+A --> C((Production Path))
+```
+
 ## ML Ops 흐름
-MSA를 편하게 사용하기 위해 Docker를 쓰게 되었다. Docker를 쓰다보니 이 많은 컨테이너들을 잘 관리할 수 있는 툴이 필요했는데 이 툴이 kubernetes이다.
-MSA --> Docker --> Kubernetes
+MSA를 편하게 사용하기 위해 Docker를 쓰게 되었다. Docker를 쓰다보니 이 많은 컨테이너들을 잘 관리할 수 있는 툴이 필요했는데 이 툴이 kubernetes이다. <br>
+> MSA --> Docker --> Kubernetes
 
 Monolithic Architecture VS MSA(Micro-Service Architecture)
 MSA는 기능마다 따로 관리가 가능
