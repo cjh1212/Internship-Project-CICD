@@ -1,3 +1,4 @@
+
 # ML Ops
 
 많은 기업들의 머신러닝 수요가 증가하면서 ML Ops 또한 매우 중요한 영역으로 자리 잡았습니다.
@@ -48,14 +49,14 @@ MA에서는 모든 서비스를 하나의 VM으로 배포
 ## ML Ops 플랫폼
 이렇게 넓은 분야의 지식을 필요로 하고 많은 기술들이 합쳐져 있는 ML Ops를 도와주는 플랫폼들이 있다. 
 
-ML Ops 플랫폼들의 기능
+**ML Ops 플랫폼들의 기능**
 
  - 데이터 관리
  - 모델 모니터링
  - 모델 관리와 모델 배포
  - 프로젝트와 리소스 관리
 
-Kubeflow<br>
+**Kubeflow**<br>
 장점:<br>
 - 무료
 - 머신러닝 파이프라인, orchestration tool 제공
@@ -66,7 +67,7 @@ Kubeflow<br>
 - 개발 / 학습과 서빙이 따로 구성되어 있음
 - 데이터 수집/관리에 대한 기능이 명확하지 않음
 
-SageMaker, Google AI Platform, Azure Machine Learning<br>
+**SageMaker, Google AI Platform, Azure Machine Learning**<br>
 장점:<br>
 - 클라우드 서비스들과 연동 가능
 - 다른 도구들과 커스텀 가능
@@ -75,7 +76,7 @@ SageMaker, Google AI Platform, Azure Machine Learning<br>
 - 멀티 클라우드와 하이브리드 배포절차가 제한적임
 - 정상적으로 쓰려면 해당 제품의 조사가 많이 필요함 (진입장벽이 낮지 않음)
 <br>
-ML Ops 플랫폼을 제공할 때 중요한 것<br>
+**ML Ops 플랫폼을 제공할 때 중요한 것**
 - 자유도가 높고 다른 도구들과 연계하여 사용하는 것이 용이
 - user-friendly document
 - 유저들에게 친절한 UI (진입장벽이 낮음)
