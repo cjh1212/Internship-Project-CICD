@@ -86,6 +86,7 @@ MA에서는 모든 서비스를 하나의 VM으로 배포
 
 - 멀티 클라우드와 하이브리드 배포절차가 제한적임
 - 정상적으로 쓰려면 해당 제품의 조사가 많이 필요함 (진입장벽이 낮지 않음)
+- 폐쇄적
 <br>
 
 ML Ops 플랫폼을 제공할 때 중요한 것
@@ -93,3 +94,11 @@ ML Ops 플랫폼을 제공할 때 중요한 것
 - 자유도가 높고 다른 도구들과 연계하여 사용하는 것이 용이
 - user-friendly document
 - 유저들에게 친절한 UI (진입장벽이 낮음)
+- Migration이 쉬워야함
+
+얼마나 사용할 수 있는 도구들이 많고 성능이 얼마나 중요한지도 매우 중요한 부분이지만 제가 생각하기에는 ML Ops 플랫폼을 제공할 때 가장 중요한 것은 자유도가 높고 이미 있는 툴들과 얼마나 잘 호환이 되는지와 사용자들이 쉽게 사용할 수 있어야 한다고 생각합니다. 2021년 기준 SageMaker가 약 70%의 점유율을 가지고 있습니다. SageMaker가 비교적 폐쇄적이고 자체 IDE를 사용하여 Migration이 쉽지 않지만 점유율이 높은 이유는 물론 성능도 좋고 사용할 수 있는 도구들도 많이 있지만 documentation과 사용자들이 많아 참고할 수 있는 레퍼런스도 많은 것도 중요한 역할을 한다고 생각합니다. 
+
+## Sources
+
+https://www.thoughtworks.com/content/dam/thoughtworks/documents/whitepaper/tw_whitepaper_guide_to_evaluating_mlops_platforms_2021.pdf
+https://neu.ro/wp-content/themes/neuro/neuro/2021_MLOps_Platforms_Vendor_Analysis_Report.pdf
