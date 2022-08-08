@@ -47,6 +47,7 @@ A --> C((Production Path))
 Monolithic Architecture에서 MSA로 넘어가면서 MSA를 편하게 사용하기 위해 Docker를 쓰게 되었다. Docker를 쓰다보니 이 많은 컨테이너들을 잘 관리할 수 있는 툴이 필요했는데 이 툴이 kubernetes이다. <br>
 > MSA --> Docker --> Kubernetes
 <br>
+
 **ML Ops에서의 K8S**
 
 1. 각각의 서버에 접속 후 모니터링 작업 감소
@@ -63,7 +64,7 @@ graph
 A[Master] --> B[server]
 A --> C[server]
 A --> D[server]
-A --> E[Scheduler]
+A <--> E[Scheduler]
 ```
 
 
