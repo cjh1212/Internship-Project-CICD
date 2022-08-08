@@ -75,7 +75,7 @@ SageMaker, Google AI Platform, Azure Machine Learning<br>
 - 멀티 클라우드와 하이브리드 배포절차가 제한적임
 - 정상적으로 쓰려면 해당 제품의 조사가 많이 필요함 (진입장벽이 낮지 않음)
 <br>
-*ML Ops 플랫폼을 제공할 때 중요한 것*
+ML Ops 플랫폼을 제공할 때 중요한 것<br>
 - 자유도가 높고 다른 도구들과 연계하여 사용하는 것이 용이
 - user-friendly document
 - 유저들에게 친절한 UI (진입장벽이 낮음)
