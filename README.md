@@ -44,12 +44,25 @@ A --> C((Production Path))
 ```
 
 ## ML Ops 흐름
-MSA를 편하게 사용하기 위해 Docker를 쓰게 되었다. Docker를 쓰다보니 이 많은 컨테이너들을 잘 관리할 수 있는 툴이 필요했는데 이 툴이 kubernetes이다. <br>
+Monolithic Architecture에서 MSA로 넘어가면서 MSA를 편하게 사용하기 위해 Docker를 쓰게 되었다. Docker를 쓰다보니 이 많은 컨테이너들을 잘 관리할 수 있는 툴이 필요했는데 이 툴이 kubernetes이다. <br>
 > MSA --> Docker --> Kubernetes
+<br>
+**ML Ops에서의 K8S**
+1. 각각의 서버에 접속 후 모니터링 작업 감소
+2. 서버별 환경을 동일하게 가능
+3. 자원관리 용이
+4. 학습 결과를 한 곳에서 확인 가능
+5. 특정 서버에 장애가 발생해도 문제가 되지 않음
+6. On-premise / Cloud 서버 구분 없이 통합 관리 가능
+<br>
+```mermaid
+graph
+A[Master] --> B[server]
+A --> C[server]
+A --> D[server]
+A --> E[Scheduler]
+```
 
-Monolithic Architecture VS MSA(Micro-Service Architecture)<br>
-MSA는 기능마다 따로 관리가 가능
-MA에서는 모든 서비스를 하나의 VM으로 배포 
 
 ## ML Ops 플랫폼
 이렇게 넓은 분야의 지식을 필요로 하고 많은 기술들이 합쳐져 있는 ML Ops를 도와주는 플랫폼들이 있다. 
@@ -65,9 +78,9 @@ MA에서는 모든 서비스를 하나의 VM으로 배포
 
 장점:
 
-- 무료
+- 무료, 오픈소스
 - 머신러닝 파이프라인, orchestration tool 제공
-- 머신러닝 프레임워크 사용 가능 (Tensorflow, Pytorch)
+- 직관적인 UI
 - Customization 용이
 <br>
 단점:
@@ -94,9 +107,9 @@ ML Ops 플랫폼을 제공할 때 중요한 것
 - 자유도가 높고 다른 도구들과 연계하여 사용하는 것이 용이
 - user-friendly document
 - 유저들에게 친절한 UI (진입장벽이 낮음)
-- Migration이 쉬워야함
+- Migration
 
-얼마나 사용할 수 있는 도구들이 많고 성능이 얼마나 중요한지도 매우 중요한 부분이지만 제가 생각하기에는 ML Ops 플랫폼을 제공할 때 가장 중요한 것은 자유도가 높고 이미 있는 툴들과 얼마나 잘 호환이 되는지와 사용자들이 쉽게 사용할 수 있어야 한다고 생각합니다. 2021년 기준 SageMaker가 약 70%의 점유율을 가지고 있습니다. SageMaker가 비교적 폐쇄적이고 자체 IDE를 사용하여 Migration이 쉽지 않지만 점유율이 높은 이유는 물론 성능도 좋고 사용할 수 있는 도구들도 많이 있지만 documentation과 사용자들이 많아 참고할 수 있는 레퍼런스도 많은 것도 중요한 역할을 한다고 생각합니다. 
+얼마나 사용할 수 있는 도구들이 많고 성능이 얼마나 중요한지도 매우 중요한 부분이지만 제가 생각하기에는 ML Ops 플랫폼을 제공할 때 가장 중요한 것은 자유도가 높고 이미 있는 툴들과 얼마나 잘 호환이 되는지와 사용자들이 쉽게 사용할 수 있어야 한다고 생각합니다. 2021년 기준 SageMaker가 약 가장 높은 점유율을 가지고 있습니다. SageMaker가 비교적 폐쇄적이고 자체 IDE를 사용하여 Migration이 쉽지 않지만 점유율이 높은 이유는 물론 성능도 좋고 사용할 수 있는 도구들도 많이 있지만 documentation과 사용자들이 많아 참고할 수 있는 레퍼런스도 많은 것도 중요한 역할을 한다고 생각합니다. 
 
 ## Sources
 
