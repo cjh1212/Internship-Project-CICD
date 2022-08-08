@@ -56,26 +56,26 @@ ML Ops 플랫폼들의 기능
  - 프로젝트와 리소스 관리
 
 Kubeflow<br>
-장점:
+장점:<br>
 - 무료
 - 머신러닝 파이프라인, orchestration tool 제공
 - 머신러닝 프레임워크 사용 가능 (Tensorflow, Pytorch)
 - Customization 용이
 <br>
-단점:
+단점:<br>
 - 개발 / 학습과 서빙이 따로 구성되어 있음
 - 데이터 수집/관리에 대한 기능이 명확하지 않음
 
 SageMaker, Google AI Platform, Azure Machine Learning<br>
-장점:
+장점:<br>
 - 클라우드 서비스들과 연동 가능
 - 다른 도구들과 커스텀 가능
 <br>
-단점:
+단점:<br>
 - 멀티 클라우드와 하이브리드 배포절차가 제한적임
 - 정상적으로 쓰려면 해당 제품의 조사가 많이 필요함 (진입장벽이 낮지 않음)
-
-ML Ops 플랫폼을 제공할 때 중요한 것
+<br>
+*ML Ops 플랫폼을 제공할 때 중요한 것*
 - 자유도가 높고 다른 도구들과 연계하여 사용하는 것이 용이
 - user-friendly document
 - 유저들에게 친절한 UI (진입장벽이 낮음)
