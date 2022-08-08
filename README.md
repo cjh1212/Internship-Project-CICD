@@ -64,7 +64,10 @@ graph
 A[Master] --> B[server]
 A --> C[server]
 A --> D[server]
-A <--> E[Scheduler]
+A --> E[Scheduler]
+B --> F[NAS]
+C --> F
+D --> F
 ```
 
 
